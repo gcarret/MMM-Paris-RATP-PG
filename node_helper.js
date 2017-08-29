@@ -1,7 +1,7 @@
 /* Magic Mirror
- * Module: MMM-Paris_RATP-PG
+ * Module: MMM-Paris-Stif
  *
- * script from da4throux
+ * gcarret, based on a script from da4throux
  * based on a Script from  Georg Peters (https://lane6.de)
  * band a Script from Benjamin Angst http://www.beny.ch
  * MIT Licensed.
@@ -93,11 +93,8 @@ module.exports = NodeHelper.create({
         case 'bus':
         case 'rers':
         case 'metros':
-          if (stopConfig.api == 'v3') {
-            url = self.config.apiBaseV3 + 'schedules/' + stopConfig.type + '/' + stopConfig.line.toString().toLowerCase() + '/' + stopConfig.stations + '/' + stopConfig.destination; // get schedule for that bus
-          } else {
-            url = self.config.apiBase + stopConfig.type + '/' + stopConfig.line.toString().toLowerCase() + '/stations/' + stopConfig.stations + '?destination=' + stopConfig.destination; // get schedule for that bus
-          }
+         url = self.config.apiBase + stopConfig.type + '/' + stopConfig.line.toString().toLowerCase() + '/stations/' + stopConfig.stations + '?destination=' + stopConfig.destination; // get schedule for that bus
+        
           self.getResponse(url, self.processBus.bind(this), stopConfig);
           break;
         case "velib":
