@@ -93,7 +93,7 @@ module.exports = NodeHelper.create({
         case 'bus':
         case 'rers':
         case 'metros':
-         url = self.config.apiBase + stopConfig.type + '/' + stopConfig.line.toString().toLowerCase() + '/stations/' + stopConfig.stations + '?destination=' + stopConfig.destination; // get schedule for that bus
+         url = self.config.apiBase + "stop-monitoring?apikey=" + self.config.apiKey+"&MonitoringRef=" + stopConfig.stations ; // get schedule for that bus
         
           self.getResponse(url, self.processBus.bind(this), stopConfig);
           break;
